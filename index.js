@@ -1,12 +1,14 @@
-const inquirer=require('inquirer');
-const manager=require('./source/manager')
-const engineer=require("./source/engineer")
-const intern=require('./source/intern')
-const fs=require('fs');
-const { type } = require('express/lib/response');
-const Choices = require('inquirer/lib/objects/choices');
-const answersArray=[];
-const ManagerQuestion=[
+const inquirer = require('inquirer');
+const manager = require('./source/manager')
+const engineer = require("./source/engineer")
+const intern = require('./source/intern')
+const fs = require('fs');
+const path = require('path');
+const htmlfunction = require('./htmlfile/html')
+const { json } = require('express/lib/response');
+
+const answersArray = [];
+const ManagerQuestion = [
     {
         type: "input",
         name: "name",
@@ -34,12 +36,12 @@ const ManagerQuestion=[
         name: "email",
         message: "Enter the team manager's email?",
         validate: answer => {
-            if(answer){
+            if (answer) {
                 return true;
-            }else{
+            } else {
                 return 'Enter Your Email '
             }
-        
+
         }
     },
     {
@@ -52,81 +54,102 @@ const ManagerQuestion=[
         type: "confirm",
         message: "Do you want add any other team member?",
     }]
-    function AddTeamMember(){
-        inquirer.prompt([{
-            name:'newadd',
-            type:"list",
-            message:"what do you want to add??Engineer or intern",
-            choices:["engineer","intern"]}
-        ]).then((answer)=>{
-            console.log(answer)
-            var Questions=[{
+function AddTeamMember() {
+    inquirer.prompt([{
+        name: 'newadd',
+        type: "list",
+        message: "what do you want to add??Engineer or intern",
+        choices: ["engineer", "intern"]
+    }
+    ]).then((answer) => {
+        console.log(answer)
+        var Questions = [{
+            type: "input",
+            name: "name",
+            message: "Enter a name for the " + answer.newadd,
+            validate: answer => {
+                if (answer) {
+                    return true;
+                }
+                return "Please enter at least one character."
+            }
+        },
+        {
+            type: "number",
+            name: "id",
+            message: "Enter id for the " + answer.newadd
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "Enter email for the " + answer.newadd,
+            validate: answer => {
+                if (answer) {
+                    return true;
+                }
+                return "Please enter your email before continue"
+            }
+        }];
+        if (answer.newadd == "engineer") {
+            Questions.push({
                 type: "input",
-                name: "name",
-                message: "Enter a name for the " + answer.newadd,
+                name: "github",
+                message: "Engineer Github username?  ",
+                validate: answer => {
+                    if (answer !== "") {
+                        return true;
+                    }
+                    return "Please enter at least one character."
+                }
+            })
+        } else if (answer.newadd == 'intern') {
+            Questions.push({
+                type: "input",
+                name: "school",
+                message: "school's name that you comming from ?",
                 validate: answer => {
                     if (answer) {
                         return true;
                     }
                     return "Please enter at least one character."
                 }
-            },
-            {
-                type: "number",
-                name: "id",
-                message: "Enter id for the " + answer.newadd
-            },
-            {
-                type: "input",
-                name: "email",
-                message: "Enter email for the " + answer.newadd,
-                validate: answer => {
-                    if (answer) {
-                        return true;
-                    }
-                    return "Please enter your email before continue"
-                }
-            }];
-            if(answer.newadd=="engineer"){
-                Questions.push({
-                    type: "input",
-                    name: "github",
-                    message: "Engineer Github username?  ",
-                    validate: answer => {
-                        if (answer !== "") {
-                            return true;
-                        }
-                        return "Please enter at least one character."
-                    }
-                })
-            }else if(answer.newadd=='intern'){
-                Questions.push({
-                    type: "input",
-                    name: "school",
-                    message: "school's name that you comming from ?" ,
-                    validate: answer => {
-                        if (answer !== "") {
-                            return true;
-                        }
-                        return "Please enter at least one character."
-                    }
-                })
+            })
+        }
+
+        inquirer.prompt(Questions).then((answer) => {
+            console.log(answer)
+            if (answer.newadd == 'engineer') {
+                const engineerInfo = new engineer(answer.name, answer.id, answer.email, answer.github)
+                answersArray.push({ engineer: engineerInfo })
+            } else {
+                const InternInfo = new intern(answer.name, answer.id, answer.email, answer.school)
+                answersArray.push({ Intern: InternInfo })
+
             }
-            
-inquirer.prompt(Questions).then((results)=>{
-    console.log(results)
-})
+            console.log(answersArray)
+            inquirer.prompt({
+                type: 'confirm',
+                name: 'confAdd',
+                message: "Do you want add new member??",
 
-            
+            }).then((answer) => {
+                console.log("last", answer)
+                if (answer.confAdd === true) {
+                    AddTeamMember()
 
+                } else {
 
+                    fs.writeFile('./htmlfile/generateprofile.html', htmlfunction(answersArray), function (err) {
+                        if (err) {
+                            console.log('error found');}
 
-
-
+                    });
+                }
+            })
         })
+    })
+}
 
-
-    }
 
 
 
@@ -134,15 +157,15 @@ function init() {
     inquirer
         .prompt(ManagerQuestion)
         .then((answers) => {
-            
-            const managerinfo = new manager(answers.name, answers.id, answers.email, answers.officeNumber);
-           answersArray.push({Manager:managerinfo});
-            if (answers.NewMember) {
-             AddTeamMember();
-            }  else{
 
-console.log('done')       
-     }
+            const managerinfo = new manager(answers.name, answers.id, answers.email, answers.officeNumber);
+            answersArray.push({ Manager: managerinfo });
+            if (answers.NewMember) {
+                AddTeamMember();
+            } else {
+
+                console.log('done')
+            }
         });
 }
 // Function call to initialize app
