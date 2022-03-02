@@ -140,7 +140,7 @@ function AddTeamMember() {
 
                 } else {
 
-                    fs.writeFile('./htmlfile/generateprofile.html', htmlfunction(answersArray), function (err) {
+                    fs.writeFile('generateprofile.html', htmlfunction(answersArray), function (err) {
                         if (err) {
                             console.log('error found');}
 
@@ -166,7 +166,7 @@ function init() {
                 AddTeamMember();
             } else {
 
-                console.log('done')
+                console.log('all companies should contain at least one member beside the manager')
             }
         });
 }

@@ -81,7 +81,7 @@ function htmlfunction(data) {
         <title>Team Profile Generator By Namees Albayati</title>
     </head>
     
-    <body class="text-darkt" style="background-image: url(./photo-1550684376-efcbd6e3f031.jpeg);max-height: 100vh;">
+    <body class="text-darkt" style="background-image: url(./htmlfile/photo-1550684376-efcbd6e3f031.jpeg);max-height: 100vh;">
     <h1 class="text-center text-light">Team Profiles</h1>
     <div class="container-fluid d-flex flex-wrap justify-content-between">
     ${creathtml(data)}
