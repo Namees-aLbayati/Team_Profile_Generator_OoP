@@ -1,12 +1,69 @@
 function creathtml(data){
-    console.log(JSON.stringify(data))
-    return 'hellooo'
-//    data.forEach(user => {
-//         const a=Object.keys(answersArray[0]).toString();
-//         console.log("i am in displayTeamProfile js for each data -> ",a=='Manager');
+console.log(data.Manager)
+    let sectioncode='';
+   let fullcode=[];
+   data.forEach(tryy=>{
+       console.log(Object.keys(tryy),tryy.Manager)
+       if(Object.keys(tryy).toString()==='engineer'){
+           console.log('manager true')
+       }
+   })
+//     data.forEach(user=>{
+//         console.log("i am in displayTeamProfile js for each data -> ",Object.keys(user)[0].toString()=='Manager'||'engineer');
+//         if(Object.keys(user)[0].toString()==='Manager'){
+//            sectioncode=` <div class="card w-50">
+//            <div class="card-header">
+//                <h2 class="card-title">${user.Manager.name}</h2>
+//                <h3 class="card-title"><i class="fas fa-glasses"></i>Manager</h3>
+//                <h3> Room No:${user.Manager.RoomNo}</h3>
+//            </div>
+//            <div class="card-body">
+//                <ul class="list-group">
+//                    <li class="list-group-item">ID: ${user.Manager.id}</li>
+//                    <li class="list-group-item">Email: <a href="mailto:${user.Manager.email}">${user.Manager.email}</a></li>
+                  
+//                </ul>
 
-        
-// })
+//            </div>
+//        </div>
+//            `
+
+//         }else if(Object.keys(user)[0].toString()==='engineer'){
+//             sectioncode=` <div class="card w-50">
+//             <div class="card-header">
+//                 <h2 class="card-title">${user.engineer.name}</h2>
+//                 <h3 class="card-title"><i class="fas fa-glasses"></i>Engineer</h3>
+//             </div>
+//             <div class="card-body">
+//                 <ul class="list-group">
+//                     <li class="list-group-item">ID: ${user.engineer.id}</li>
+//                     <li class="list-group-item">Email: <a href="mailto:${user.engineer.email}">${user.engineer.email}</a></li>
+                   
+//                 </ul>
+ 
+//             </div>
+//         </div>
+//             `        }else{
+//                 sectioncode=` <div class="card w-50">
+//                 <div class="card-header">
+//                     <h2 class="card-title">${user.intern.name}</h2>
+//                     <h3 class="card-title"><i class="fas fa-glasses"></i>Engineer</h3>
+//                 </div>
+//                 <div class="card-body">
+//                     <ul class="list-group">
+//                         <li class="list-group-item">ID: ${user.intern.id}</li>
+//                         <li class="list-group-item">Email: <a href="mailto:${user.engineer.email}">${user.engineer.email}</a></li>
+                       
+//                     </ul>
+     
+//                 </div>
+//             </div>
+//                 `
+//             }
+//     })
+//     fullcode.push(sectioncode)
+// console.log(fullcode)
+// return fullcode.toString()
 }
 function htmlfunction(data){
     return `<!DOCTYPE html>

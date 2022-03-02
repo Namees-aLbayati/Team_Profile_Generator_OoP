@@ -62,7 +62,6 @@ function AddTeamMember() {
         choices: ["engineer", "intern"]
     }
     ]).then((answer) => {
-        console.log(answer)
         var Questions = [{
             type: "input",
             name: "name",
@@ -90,7 +89,7 @@ function AddTeamMember() {
                 return "Please enter your email before continue"
             }
         }];
-        if (answer.newadd == "engineer") {
+        if (answer.newadd==='engineer') {
             Questions.push({
                 type: "input",
                 name: "github",
@@ -101,7 +100,9 @@ function AddTeamMember() {
                     }
                     return "Please enter at least one character."
                 }
+
             })
+            
         } else if (answer.newadd == 'intern') {
             Questions.push({
                 type: "input",
@@ -116,13 +117,14 @@ function AddTeamMember() {
             })
         }
 
-        inquirer.prompt(Questions).then((answer) => {
-            console.log(answer)
+        inquirer.prompt(Questions).then((answer2) => {
+            console.log('here',answer2)
+
             if (answer.newadd == 'engineer') {
-                const engineerInfo = new engineer(answer.name, answer.id, answer.email, answer.github)
+                const engineerInfo = new engineer(answer2.name, answer2.id, answer2.email, answer2.github)
                 answersArray.push({ engineer: engineerInfo })
             } else {
-                const InternInfo = new intern(answer.name, answer.id, answer.email, answer.school)
+                const InternInfo = new intern(answer2.name, answer2.id, answer2.email, answer2.school)
                 answersArray.push({ Intern: InternInfo })
 
             }
@@ -133,7 +135,6 @@ function AddTeamMember() {
                 message: "Do you want add new member??",
 
             }).then((answer) => {
-                console.log("last", answer)
                 if (answer.confAdd === true) {
                     AddTeamMember()
 

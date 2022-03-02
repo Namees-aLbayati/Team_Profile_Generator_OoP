@@ -1,6 +1,6 @@
 const Employee=require("./employee")
 
-class engineer extends Employee{
+class Engineer extends Employee{
     constructor(Name,Email,id,GitHub){
         super(Name,Email,id)
         this.GitHub=GitHub;
@@ -13,6 +13,6 @@ class engineer extends Employee{
 
     }
 }
-module.exports=engineer;
+module.exports=Engineer;
 // const tryy=new Engineer('namees',"jsks",33,'@@@')
 // tryy.getinfoE()
