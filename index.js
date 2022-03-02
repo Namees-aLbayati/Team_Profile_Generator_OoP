@@ -118,13 +118,13 @@ function AddTeamMember() {
         }
 
         inquirer.prompt(Questions).then((answer2) => {
-            console.log('here',answer2)
+            console.log('Stored Data',answer2)
 
             if (answer.newadd == 'engineer') {
                 const engineerInfo = new engineer(answer2.name, answer2.id, answer2.email, answer2.github)
                 answersArray.push({ engineer: engineerInfo })
             } else {
-                const InternInfo = new intern(answer2.name, answer2.id, answer2.email, answer2.school)
+                const InternInfo = new intern(answer2.name, answer2.email, answer2.id, answer2.school)
                 answersArray.push({ Intern: InternInfo })
 
             }
@@ -145,6 +145,7 @@ function AddTeamMember() {
                             console.log('error found');}
 
                     });
+                    console.log('DONE!!!')
                 }
             })
         })
@@ -159,7 +160,7 @@ function init() {
         .prompt(ManagerQuestion)
         .then((answers) => {
 
-            const managerinfo = new manager(answers.name, answers.id, answers.email, answers.officeNumber);
+            const managerinfo = new manager(answers.name, answers.email, answers.id, answers.officeNumber);
             answersArray.push({ Manager: managerinfo });
             if (answers.NewMember) {
                 AddTeamMember();

@@ -1,71 +1,70 @@
-function creathtml(data){
-console.log(data.Manager)
-    let sectioncode='';
-   let fullcode=[];
-   data.forEach(tryy=>{
-       console.log(Object.keys(tryy),tryy.Manager)
-       if(Object.keys(tryy).toString()==='engineer'){
-           console.log('manager true')
-       }
-   })
-//     data.forEach(user=>{
-//         console.log("i am in displayTeamProfile js for each data -> ",Object.keys(user)[0].toString()=='Manager'||'engineer');
-//         if(Object.keys(user)[0].toString()==='Manager'){
-//            sectioncode=` <div class="card w-50">
-//            <div class="card-header">
-//                <h2 class="card-title">${user.Manager.name}</h2>
-//                <h3 class="card-title"><i class="fas fa-glasses"></i>Manager</h3>
-//                <h3> Room No:${user.Manager.RoomNo}</h3>
-//            </div>
-//            <div class="card-body">
-//                <ul class="list-group">
-//                    <li class="list-group-item">ID: ${user.Manager.id}</li>
-//                    <li class="list-group-item">Email: <a href="mailto:${user.Manager.email}">${user.Manager.email}</a></li>
-                  
-//                </ul>
+function creathtml(data) {
+    let sectioncode = "";
+    let fullcode = [];
+    data.forEach(tryy => {
+        if (Object.keys(tryy)[0] == 'engineer') {
+            //    console.log(Object.values(tryy)[0]['id'])
+            //    console.log(Object.values(tryy)[0].id)
 
-//            </div>
-//        </div>
-//            `
 
-//         }else if(Object.keys(user)[0].toString()==='engineer'){
-//             sectioncode=` <div class="card w-50">
-//             <div class="card-header">
-//                 <h2 class="card-title">${user.engineer.name}</h2>
-//                 <h3 class="card-title"><i class="fas fa-glasses"></i>Engineer</h3>
-//             </div>
-//             <div class="card-body">
-//                 <ul class="list-group">
-//                     <li class="list-group-item">ID: ${user.engineer.id}</li>
-//                     <li class="list-group-item">Email: <a href="mailto:${user.engineer.email}">${user.engineer.email}</a></li>
-                   
-//                 </ul>
- 
-//             </div>
-//         </div>
-//             `        }else{
-//                 sectioncode=` <div class="card w-50">
-//                 <div class="card-header">
-//                     <h2 class="card-title">${user.intern.name}</h2>
-//                     <h3 class="card-title"><i class="fas fa-glasses"></i>Engineer</h3>
-//                 </div>
-//                 <div class="card-body">
-//                     <ul class="list-group">
-//                         <li class="list-group-item">ID: ${user.intern.id}</li>
-//                         <li class="list-group-item">Email: <a href="mailto:${user.engineer.email}">${user.engineer.email}</a></li>
-                       
-//                     </ul>
-     
-//                 </div>
-//             </div>
-//                 `
-//             }
-//     })
-//     fullcode.push(sectioncode)
-// console.log(fullcode)
-// return fullcode.toString()
+            sectioncode = `<div class="card w-25">
+                      <div class="card-header text-center">
+                          <h2 class="card-title">${Object.values(tryy)[0].name}</h2>
+                          <h3 class="card-title"><i class="fas fa-glasses"></i>Engineer</h3>
+                      </div>
+                      <div class="card-body">
+                          <ul class="list-group">
+                              <li class="list-group-item">ID: ${Object.values(tryy)[0].id}</li>
+                              <li class="list-group-item">Email: <a href="mailto:${Object.values(tryy)[0].Email}">${Object.values(tryy)[0].Email}</a></li>
+                              <li class="list-group-item">GitHub Page: <a href="https://github.com/${Object.values(tryy)[0].GitHub}">${Object.values(tryy)[0].GitHub}</a></li>
+
+                          </ul>
+           
+                      </div>
+                  </div>`
+
+        } else if (Object.keys(tryy)[0] == 'Manager') {
+            sectioncode = `<div class="card w-25">
+        <div class="card-header text-center">
+            <h2 class="card-title">${Object.values(tryy)[0].name}</h2>
+            <h3 class="card-title"><i class="fas fa-glasses"></i>Manager</h3>
+            <h3>Room Number: ${Object.values(tryy)[0].RoomNo}</h3>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">ID: ${Object.values(tryy)[0].id}</li>
+                <li class="list-group-item">Email: <a href="mailto:${Object.values(tryy)[0].Email}">${Object.values(tryy)[0].Email}</a></li>
+
+            </ul>
+
+        </div>
+    </div>`
+
+        } else {
+            sectioncode = `<div class="card w-25">
+        <div class="card-header text-center">
+            <h2 class="card-title">${Object.values(tryy)[0].name}</h2>
+            <h3 class="card-title"><i class="fas fa-glasses"></i>Intern</h3>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">ID: ${Object.values(tryy)[0].id}</li>
+                <li class="list-group-item">Email: <a href="mailto:${Object.values(tryy)[0].Email}">${Object.values(tryy)[0].Email}</a></li>
+                <li class="list-group-item">School Referal :${Object.values(tryy)[0].School} </li>
+
+            </ul>
+
+        </div>
+    </div>`
+
+        }
+        fullcode += sectioncode;
+    })
+    return fullcode;
+
+
 }
-function htmlfunction(data){
+function htmlfunction(data) {
     return `<!DOCTYPE html>
     <html lang="en">
     
@@ -78,14 +77,13 @@ function htmlfunction(data){
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
-            <link rel="stylesheet" href="style.css">
     
         <title>Team Profile Generator By Namees Albayati</title>
     </head>
     
-    <body class="text-light">
-    <h1 class="text-center">Team Profiles</h1>
-    <div class="container-fluid d-flex flex-wrap">
+    <body class="text-darkt" style="background-image: url(./photo-1550684376-efcbd6e3f031.jpeg);max-height: 100vh;">
+    <h1 class="text-center text-light">Team Profiles</h1>
+    <div class="container-fluid d-flex flex-wrap justify-content-between">
     ${creathtml(data)}
 
         
@@ -98,4 +96,4 @@ function htmlfunction(data){
     </html>`
 }
 
-module.exports=htmlfunction;
+module.exports = htmlfunction;
