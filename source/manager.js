@@ -4,13 +4,6 @@ class Manager extends Employee{
         super(Name,Email,Id)
         this.RoomNo=RoomNo;
         
-
-    }getinfoM(){
-        return this.RoomNo
-    }
-    getposition(){
-        return 'Manager'
-
     }
 }
 module.exports=Manager;
