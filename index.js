@@ -140,7 +140,7 @@ function AddTeamMember() {
 
                 } else {
 
-                    fs.writeFile('generateprofile.html', htmlfunction(answersArray), function (err) {
+                    fs.writeFile('index.html', htmlfunction(answersArray), function (err) {
                         if (err) {
                             console.log('error found');}
 
