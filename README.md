@@ -1,8 +1,5 @@
 # Team_Profile_Generator_OoP
-Team_Profile_Generator_OoP
-Live Page Link
-https://namees-github.github.io/Team_Profile_Generator_OoP # to excute this assignment:
-
+# Excution Guid:
 npm i
 node index.js
 go open html file to find profile team generator file with .html extension # Pgogramm language/package used
@@ -31,7 +28,15 @@ THEN I am prompted to enter the intern’s name, ID, email, and school, and I am
 WHEN I decide to finish building my team
 THEN I exit the application, and the HTML is generated
 ```
-# Workthrough screenshots 
-Screen Recording 2022-03-02 at 9.01.09 AM.mp4
+# Workthrough video
+
+
+
+https://user-images.githubusercontent.com/95061565/156497465-a9282db5-8b0b-4967-8082-daa8f29cfcdc.mp4
+<img width="1440" alt="Screen Shot 2022-03-02 at 12 36 53 AM" src="https://user-images.githubusercontent.com/95061565/156497517-c07df6df-30d0-4484-8e0d-d70b60fd74ed.png">
+
+
+# work screenshot
+<img width="1440" alt="Screen Shot 2022-03-02 at 1 20 00 AM" src="https://user-images.githubusercontent.com/95061565/156497512-e7041544-6bd5-4a97-9744-ae802147afa5.png">
 
 
