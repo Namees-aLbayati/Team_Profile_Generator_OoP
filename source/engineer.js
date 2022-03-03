@@ -5,14 +5,14 @@ class Engineer extends Employee{
         super(Name,Email,id)
         this.GitHub=GitHub;
     }
-    getinfoG(){
+    getGithub(){
         return this.GitHub
     }
-    getposition(){
+    getRole(){
         return 'Engineer'
 
     }
 }
 module.exports=Engineer;
 // const tryy=new Engineer('namees',"jsks",33,'@@@')
-// tryy.getinfoE()
+// tryy.getGithub
