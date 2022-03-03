@@ -36,7 +36,9 @@ https://user-images.githubusercontent.com/95061565/156497465-a9282db5-8b0b-4967-
 <img width="1440" alt="Screen Shot 2022-03-02 at 12 36 53 AM" src="https://user-images.githubusercontent.com/95061565/156497517-c07df6df-30d0-4484-8e0d-d70b60fd74ed.png">
 
 
-# work screenshot
+# work screenshot for the website after excution and pass test using jest
 <img width="1440" alt="Screen Shot 2022-03-02 at 1 20 00 AM" src="https://user-images.githubusercontent.com/95061565/156497512-e7041544-6bd5-4a97-9744-ae802147afa5.png">
+
+<img width="1440" alt="Screen Shot 2022-03-02 at 12 36 53 AM" src="https://user-images.githubusercontent.com/95061565/156497763-890a2b0f-5a26-4088-a047-b7dd2580e1ae.png">
 
 
