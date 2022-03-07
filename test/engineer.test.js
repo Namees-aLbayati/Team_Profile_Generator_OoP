@@ -6,7 +6,7 @@ test('Engineer Object testing', () => {
     expect(engineer.name).toBe('nameesmohammed');
     expect(engineer.id).toEqual(expect.any(Number));
     expect(engineer.Email).toBe('n@gmail');
-    expect(engineer.getinfoG()).toBe('n@git');
-    expect(engineer.getposition()).toBe('Engineer')
+    expect(engineer.getGithub()).toBe('n@git');
+    expect(engineer.getRole()).toBe('Engineer')
     
   });
